@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#07111f">
+<title>KISHAN PRO SCANNER</title>
+<style>
+:root{--bg:#07111f;--panel:#101d30;--panel2:#14243a;--line:#263b55;--txt:#edf4ff;--muted:#9eb0c8;--green:#21c58e;--red:#ff6577;--blue:#55a8ff;--gold:#f4c45e}
+*{box-sizing:border-box}body{margin:0;background:linear-gradient(145deg,#07111f,#0b1830 60%,#07111f);color:var(--txt);font:15px system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
+header{padding:22px 18px 16px;border-bottom:1px solid var(--line);background:#091526}
+.wrap{max-width:1100px;margin:auto}.brand{font-size:22px;font-weight:850;letter-spacing:.5px}.brand span{color:var(--blue)}.sub{color:var(--muted);font-size:12px;margin-top:5px}
+.pill{display:inline-block;border:1px solid #795e23;color:var(--gold);background:#352b16;padding:5px 9px;border-radius:20px;font-size:11px;font-weight:700;margin-top:12px}
+nav{display:flex;gap:8px;overflow:auto;padding:14px 18px;border-bottom:1px solid var(--line)}nav a{color:var(--muted);text-decoration:none;padding:8px 12px;border-radius:9px;white-space:nowrap}nav a.active{background:#17304e;color:white}
+main{padding:18px;max-width:1100px;margin:auto}.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.card{background:linear-gradient(160deg,var(--panel2),var(--panel));border:1px solid var(--line);border-radius:14px;padding:15px}.metric{font-size:23px;font-weight:800;margin-top:7px}.label{font-size:12px;color:var(--muted)}.section{margin-top:18px}.section h2{font-size:17px;margin:0 0 12px}.notice{border:1px solid #735b2c;background:#2b2518;color:#f6d98f;border-radius:12px;padding:12px 14px;font-size:13px;line-height:1.5}
+.controls{display:flex;gap:9px;flex-wrap:wrap;margin:12px 0}input,select,button{font:inherit;border-radius:9px;padding:10px 12px;border:1px solid var(--line);background:#0b1728;color:var(--txt)}input{min-width:180px;flex:1}button{background:#1766b3;border-color:#287dc9;font-weight:700;cursor:pointer}button.secondary{background:#17283e;border-color:var(--line)}
+table{width:100%;border-collapse:collapse;font-size:13px}th,td{text-align:left;padding:12px 9px;border-bottom:1px solid var(--line)}th{color:var(--muted);font-weight:600}.buy{color:var(--green);font-weight:800}.sell{color:var(--red);font-weight:800}.wait{color:var(--gold);font-weight:800}
+.small{font-size:12px;color:var(--muted);line-height:1.55}.two{display:grid;grid-template-columns:1fr 1fr;gap:12px}.tag{font-size:10px;border:1px solid var(--line);padding:3px 6px;border-radius:6px;color:var(--muted)}
+footer{padding:22px 18px;color:var(--muted);font-size:11px;text-align:center;border-top:1px solid var(--line);margin-top:28px}
+@media(max-width:700px){.grid{grid-template-columns:repeat(2,1fr)}.two{grid-template-columns:1fr}main{padding:14px}.metric{font-size:20px}table{min-width:570px}.tablebox{overflow:auto}}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+ <div class="brand">KISHAN <span>PRO</span> SCANNER</div>
+ <div class="sub">INTRADAY MARKET SCANNER · 5 MIN + 15 MIN TREND</div>
+ <div class="pill">DEMO PREVIEW · LIVE DATA NOT CONNECTED</div>
+</div></header>
+<nav><a class="active" href="#dashboard">Dashboard</a><a href="#scanner">Stock Scanner</a><a href="#strategy">Strategy</a><a href="#setup">Live Setup</a></nav>
+<main id="dashboard">
+ <div class="notice"><b>Important:</b> यह अभी वेबसाइट का शुरुआती डैशबोर्ड है। नीचे दिखने वाले उदाहरण असली बाजार के संकेत या लाइव कीमतें नहीं हैं। Angel One API / market-data connection और सुरक्षित backend जोड़ने के बाद ही live scanning चालू होगी।</div>
+ <div class="grid section">
+  <div class="card"><div class="label">MARKET STATUS</div><div class="metric">Setup</div><div class="small">Live connection pending</div></div>
+  <div class="card"><div class="label">TIMEFRAME</div><div class="metric">5 min</div><div class="small">15 min trend confirmation</div></div>
+  <div class="card"><div class="label">BUY SIGNALS</div><div class="metric">—</div><div class="small">Waiting for live data</div></div>
+  <div class="card"><div class="label">SELL SIGNALS</div><div class="metric">—</div><div class="small">Waiting for live data</div></div>
+ </div>
+ <section class="section" id="scanner">
+  <h2>Stock Scanner <span class="tag">Preview</span></h2>
+  <div class="controls"><input id="symbol" placeholder="Enter symbol e.g. RELIANCE"><button onclick="addSymbol()">Add Stock</button><button class="secondary" onclick="resetList()">Reset</button></div>
+  <div class="card tablebox"><table><thead><tr><th>SYMBOL</th><th>5M SIGNAL</th><th>15M TREND</th><th>ENTRY</th><th>STOP LOSS</th><th>TARGET</th></tr></thead><tbody id="rows"><tr><td colspan="6" class="small">No live market data connected. Add symbols to create your watchlist.</td></tr></tbody></table></div>
+  <p class="small">Watchlist entries are kept only in this page session. No real trade recommendation is generated in this preview.</p>
+ </section>
+ <section class="section two" id="strategy">
+  <div class="card"><h2>Scanner Modules</h2><p class="small">• Strong Buy / Strong Sell identification<br>• 5-minute entry timeframe<br>• 15-minute trend confirmation<br>• Multi-stock ranking<br>• Entry, Stop Loss and Target calculation<br>• Sudden volume expansion alerts</p></div>
+  <div class="card"><h2>Advanced Modules</h2><p class="small">• Market Pulse<br>• Money Flow<br>• Order Flow<br>• Backtesting framework<br><br>इन मॉड्यूल्स के लिए विश्वसनीय market feed और calculation logic जोड़ना बाकी है।</p></div>
+ </section>
+ <section class="section" id="setup">
+  <div class="card"><h2>Live Scanner Activation</h2><p class="small">अगले चरण में Angel One SmartAPI के लिए backend, login/session handling, NSE instrument list, live candle data, signal engine और सुरक्षित API configuration जोड़ेंगे। API key, client ID या password इस HTML फाइल में कभी न डालें।</p><span class="tag">STEP 1 · WEBSITE FILE</span> <span class="tag">STEP 2 · GITHUB PAGES</span> <span class="tag">STEP 3 · LIVE API BACKEND</span></div>
+ </section>
+</main>
+<footer>KISHAN PRO SCANNER · Educational software preview. Not investment advice.</footer>
+<script>
+let watch=[];
+function render(){const body=document.getElementById('rows');if(!watch.length){body.innerHTML='<tr><td colspan="6" class="small">No live market data connected. Add symbols to create your watchlist.</td></tr>';return;}body.innerHTML=watch.map(s=>`<tr><td><b>${s}</b></td><td class="wait">PENDING</td><td class="wait">PENDING</td><td>—</td><td>—</td><td>—</td></tr>`).join('')}
+function addSymbol(){const el=document.getElementById('symbol');const s=el.value.trim().toUpperCase().replace(/[^A-Z0-9&._-]/g,'');if(s&&!watch.includes(s)){watch.push(s);render()}el.value=''}
+function resetList(){watch=[];render()}
+</script>
+</body></html>
